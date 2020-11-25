@@ -1,0 +1,52 @@
+{
+  "name": "quasarapp",
+  "version": "0.0.1",
+  "description": "A Quasar Framework app",
+  "productName": "Quasar App",
+  "cordovaId": "org.cordova.quasar.app",
+  "capacitorId": "",
+  "author": "David Rey G. <neisserrey@upeu.edu.pe>",
+  "private": true,
+  "scripts": {
+    "lint": "eslint --ext .js,.vue ./",
+    "test": "echo \"No test specified\" && exit 0"
+  },
+  "dependencies": {
+    "@quasar/extras": "^1.0.0",
+    "@websanova/vue-auth": "^3.2.1-beta",
+    "axios": "^0.18.1",
+    "dinero.js": "^1.8.1",
+    "quasar": "^1.0.0",
+    "validator": "^13.0.0",
+    "vee-validate": "^3.3.2",
+    "vue-axios": "^2.1.5",
+    "vue-currency-input": "^1.19.0",
+    "vue-file-agent": "^1.7.3",
+    "vue-i18n": "^8.0.0",
+    "vue-sweetalert2": "^3.0.5",
+    "vuex-map-fields": "^1.4.0"
+  },
+  "devDependencies": {
+    "@quasar/app": "^1.0.0",
+    "babel-eslint": "^10.0.1",
+    "eslint": "^6.8.0",
+    "eslint-config-prettier": "^6.9.0",
+    "eslint-loader": "^3.0.3",
+    "eslint-plugin-import": "^2.21.2",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-promise": "^4.2.1",
+    "eslint-plugin-standard": "^4.0.1",
+    "eslint-plugin-vue": "^7.0.0-alpha.6"
+  },
+  "engines": {
+    "node": ">= 10.18.1",
+    "npm": ">= 6.13.4",
+    "yarn": ">= 1.21.1"
+  },
+  "browserslist": [
+    "last 1 version, not dead, ie >= 11"
+  ],
+  "resolutions": {
+    "@babel/parser": "7.7.5"
+  }
+}

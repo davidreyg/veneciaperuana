@@ -1,0 +1,1735 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Restobar Venecia Peruana",
+        "description": "Sistema de restaurante en linea. Con control de inventario",
+        "contact": {
+            "email": "neisserrey@upeu.edu.pe"
+        },
+        "license": {
+            "name": "Apache 2.0",
+            "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+        },
+        "version": "1.0"
+    },
+    "servers": [
+        {
+            "url": "http://veneciaperuana.dev.com/api/",
+            "description": "Documentación del Restobar Venecia Peruana"
+        }
+    ],
+    "paths": {
+        "/categories": {
+            "get": {
+                "tags": [
+                    "categories"
+                ],
+                "summary": "Mostrar Categorias de productos",
+                "operationId": "App\\Http\\Controllers\\Api\\CategoryController::index",
+                "responses": {
+                    "401": {
+                        "description": "Inserta tu token pues hermano!"
+                    },
+                    "200": {
+                        "description": "Lista de Categorias de productos. Correcto"
+                    }
+                },
+                "security": [
+                    {
+                        "bearer": []
+                    }
+                ]
+            },
+            "post": {
+                "tags": [
+                    "categories"
+                ],
+                "summary": "Agregar un nuevo Categorias de productos.",
+                "operationId": "store",
+                "requestBody": {
+                    "description": "Categorias de productos a ser creado",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Category"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "401": {
+                        "description": "Inserta tu token pues hermano!"
+                    },
+                    "201": {
+                        "description": "Creado"
+                    }
+                },
+                "security": [
+                    {
+                        "bearer": []
+                    }
+                ]
+            }
+        },
+        "/categories/{categoryID}": {
+            "get": {
+                "tags": [
+                    "categories"
+                ],
+                "summary": "Buscar Categorias de productos por ID",
+                "description": "Retorna un Categorias de productos",
+                "operationId": "show",
+                "parameters": [
+                    {
+                        "name": "categoryID",
+                        "in": "path",
+                        "description": "ID del Categorias de productos a retornar",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Category"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Inserta tu token pues hermano!"
+                    },
+                    "404": {
+                        "description": "Categorias de productos no existe"
+                    }
+                },
+                "security": [
+                    {
+                        "bearer": []
+                    }
+                ]
+            }
+        },
+        "/categories/{categoryId}": {
+            "put": {
+                "tags": [
+                    "categories"
+                ],
+                "summary": "Actualizar una Categorias de productos existente",
+                "description": "",
+                "operationId": "update",
+                "parameters": [
+                    {
+                        "name": "categoryId",
+                        "in": "path",
+                        "description": "ID del Categorias de productos a actualizar",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "description": "Categorias de productos a ser actualizada",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Category"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "404": {
+                        "description": "Categorias de productos no encontrado"
+                    },
+                    "401": {
+                        "description": "Inserta tu token pues hermano!"
+                    },
+                    "200": {
+                        "description": "Categorias de productos actualizado correctamente"
+                    }
+                },
+                "security": [
+                    {
+                        "bearer": []
+                    }
+                ]
+            },
+            "delete": {
+                "tags": [
+                    "categories"
+                ],
+                "summary": "Elimina un Categorias de productos",
+                "description": "",
+                "operationId": "delete",
+                "parameters": [
+                    {
+                        "name": "categoryId",
+                        "in": "path",
+                        "description": "Id del Categorias de productos a eliminar",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    }
+                ],
+                "responses": {
+                    "404": {
+                        "description": "Categorias de productos no encontrado"
+                    },
+                    "401": {
+                        "description": "Inserta tu token pues hermano!"
+                    },
+                    "200": {
+                        "description": "Categorias de productos eliminado correctamente"
+                    }
+                },
+                "security": [
+                    {
+                        "bearer": []
+                    }
+                ]
+            }
+        },
+        "/clients": {
+            "get": {
+                "tags": [
+                    "clients"
+                ],
+                "summary": "Mostrar clientes",
+                "operationId": "App\\Http\\Controllers\\Api\\ClientController::index",
+                "responses": {
+                    "401": {
+                        "description": "Inserta tu token pues hermano!"
+                    },
+                    "200": {
+                        "description": "Lista de clientes. Correcto"
+                    }
+                },
+                "security": [
+                    {
+                        "bearer": []
+                    }
+                ]
+            },
+            "post": {
+                "tags": [
+                    "clients"
+                ],
+                "summary": "Agregar un nuevo Cliente.",
+                "operationId": "store",
+                "requestBody": {
+                    "description": "Cliente a ser creado",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Client"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "401": {
+                        "description": "Inserta tu token pues hermano!"
+                    },
+                    "201": {
+                        "description": "Creado"
+                    }
+                },
+                "security": [
+                    {
+                        "bearer": []
+                    }
+                ]
+            }
+        },
+        "/clients/{clientId}": {
+            "get": {
+                "tags": [
+                    "clients"
+                ],
+                "summary": "Buscar cliente por ID",
+                "description": "Retorna un cliente",
+                "operationId": "show",
+                "parameters": [
+                    {
+                        "name": "clientId",
+                        "in": "path",
+                        "description": "ID del cliente a retornar",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Client"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Inserta tu token pues hermano!"
+                    },
+                    "404": {
+                        "description": "cliente no existe"
+                    }
+                },
+                "security": [
+                    {
+                        "bearer": []
+                    }
+                ]
+            },
+            "put": {
+                "tags": [
+                    "clients"
+                ],
+                "summary": "Actualizar un Cliente existente",
+                "description": "",
+                "operationId": "update",
+                "parameters": [
+                    {
+                        "name": "clientId",
+                        "in": "path",
+                        "description": "ID del Cliente a actualizar",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "description": "Cliente a ser actualizada",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Client"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "404": {
+                        "description": "Cliente no encontrada"
+                    },
+                    "401": {
+                        "description": "Inserta tu token pues hermano!"
+                    },
+                    "200": {
+                        "description": "Cliente actualizada correctamente"
+                    }
+                },
+                "security": [
+                    {
+                        "bearer": []
+                    }
+                ]
+            },
+            "delete": {
+                "tags": [
+                    "clients"
+                ],
+                "summary": "Elimina un cliente",
+                "description": "",
+                "operationId": "delete",
+                "parameters": [
+                    {
+                        "name": "clientId",
+                        "in": "path",
+                        "description": "Id del cliente a eliminar",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    }
+                ],
+                "responses": {
+                    "404": {
+                        "description": "cliente no encontrado"
+                    },
+                    "401": {
+                        "description": "Inserta tu token pues hermano!"
+                    },
+                    "200": {
+                        "description": "cliente eliminado correctamente"
+                    }
+                },
+                "security": [
+                    {
+                        "bearer": []
+                    }
+                ]
+            }
+        },
+        "/employees": {
+            "get": {
+                "tags": [
+                    "employees"
+                ],
+                "summary": "Mostrar Empleados",
+                "operationId": "App\\Http\\Controllers\\Api\\EmployeeController::index",
+                "responses": {
+                    "401": {
+                        "description": "Inserta tu token pues hermano!"
+                    },
+                    "200": {
+                        "description": "Lista de Empleados. Correcto"
+                    }
+                },
+                "security": [
+                    {
+                        "bearer": []
+                    }
+                ]
+            },
+            "post": {
+                "tags": [
+                    "employees"
+                ],
+                "summary": "Agregar un nuevo Empleado.",
+                "operationId": "store",
+                "requestBody": {
+                    "description": "Empleado a ser creado",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Employee"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "401": {
+                        "description": "Inserta tu token pues hermano!"
+                    },
+                    "201": {
+                        "description": "Creado"
+                    }
+                },
+                "security": [
+                    {
+                        "bearer": []
+                    }
+                ]
+            }
+        },
+        "/employees/{employeeId}": {
+            "get": {
+                "tags": [
+                    "employees"
+                ],
+                "summary": "Buscar Empleado por ID",
+                "description": "Retorna un Empleado",
+                "operationId": "show",
+                "parameters": [
+                    {
+                        "name": "employeeId",
+                        "in": "path",
+                        "description": "ID del Empleado a retornar",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Employee"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Inserta tu token pues hermano!"
+                    },
+                    "404": {
+                        "description": "Empleado no existe"
+                    }
+                },
+                "security": [
+                    {
+                        "bearer": []
+                    }
+                ]
+            },
+            "put": {
+                "tags": [
+                    "employees"
+                ],
+                "summary": "Actualizar un Empleado existente",
+                "description": "",
+                "operationId": "update",
+                "parameters": [
+                    {
+                        "name": "employeeId",
+                        "in": "path",
+                        "description": "ID del Empleado a actualizar",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "description": "Empleado a ser actualizada",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Employee"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "404": {
+                        "description": "Empleado no encontrada"
+                    },
+                    "401": {
+                        "description": "Inserta tu token pues hermano!"
+                    },
+                    "200": {
+                        "description": "Empleado actualizada correctamente"
+                    }
+                },
+                "security": [
+                    {
+                        "bearer": []
+                    }
+                ]
+            },
+            "delete": {
+                "tags": [
+                    "employees"
+                ],
+                "summary": "Elimina un Empleado",
+                "description": "",
+                "operationId": "delete",
+                "parameters": [
+                    {
+                        "name": "employeeId",
+                        "in": "path",
+                        "description": "Id del Empleado a eliminar",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    }
+                ],
+                "responses": {
+                    "404": {
+                        "description": "Empleado no encontrado"
+                    },
+                    "401": {
+                        "description": "Inserta tu token pues hermano!"
+                    },
+                    "200": {
+                        "description": "Empleado eliminado correctamente"
+                    }
+                },
+                "security": [
+                    {
+                        "bearer": []
+                    }
+                ]
+            }
+        },
+        "/ingredients": {
+            "get": {
+                "tags": [
+                    "ingredients"
+                ],
+                "summary": "Mostrar Ingredientes",
+                "operationId": "App\\Http\\Controllers\\Api\\IngredientController::index",
+                "responses": {
+                    "401": {
+                        "description": "Inserta tu token pues hermano!"
+                    },
+                    "200": {
+                        "description": "Lista de Ingredientes. Correcto"
+                    }
+                },
+                "security": [
+                    {
+                        "bearer": []
+                    }
+                ]
+            },
+            "post": {
+                "tags": [
+                    "ingredients"
+                ],
+                "summary": "Agregar un nuevo Ingrediente.",
+                "operationId": "store",
+                "requestBody": {
+                    "description": "Ingrediente a ser creado",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Ingredient"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "401": {
+                        "description": "Inserta tu token pues hermano!"
+                    },
+                    "201": {
+                        "description": "Creado"
+                    }
+                },
+                "security": [
+                    {
+                        "bearer": []
+                    }
+                ]
+            }
+        },
+        "/ingredients/{ingredientId}": {
+            "get": {
+                "tags": [
+                    "ingredients"
+                ],
+                "summary": "Buscar Ingrediente por ID",
+                "description": "Retorna un Ingrediente",
+                "operationId": "show",
+                "parameters": [
+                    {
+                        "name": "ingredientId",
+                        "in": "path",
+                        "description": "ID del Ingrediente a retornar",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Ingredient"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Inserta tu token pues hermano!"
+                    },
+                    "404": {
+                        "description": "Ingrediente no existe"
+                    }
+                },
+                "security": [
+                    {
+                        "bearer": []
+                    }
+                ]
+            },
+            "put": {
+                "tags": [
+                    "ingredients"
+                ],
+                "summary": "Actualizar un Ingredient existente",
+                "description": "",
+                "operationId": "update",
+                "parameters": [
+                    {
+                        "name": "ingredientId",
+                        "in": "path",
+                        "description": "ID del Ingredient a actualizar",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "description": "Ingredient a ser actualizada",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Ingredient"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "404": {
+                        "description": "Ingredient no encontrada"
+                    },
+                    "401": {
+                        "description": "Inserta tu token pues hermano!"
+                    },
+                    "200": {
+                        "description": "Ingredient actualizada correctamente"
+                    }
+                },
+                "security": [
+                    {
+                        "bearer": []
+                    }
+                ]
+            },
+            "delete": {
+                "tags": [
+                    "ingredients"
+                ],
+                "summary": "Elimina un Ingrediente",
+                "description": "",
+                "operationId": "delete",
+                "parameters": [
+                    {
+                        "name": "ingredientId",
+                        "in": "path",
+                        "description": "Id del Ingrediente a eliminar",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    }
+                ],
+                "responses": {
+                    "404": {
+                        "description": "Ingrediente no encontrado"
+                    },
+                    "401": {
+                        "description": "Inserta tu token pues hermano!"
+                    },
+                    "200": {
+                        "description": "Ingrediente eliminado correctamente"
+                    }
+                },
+                "security": [
+                    {
+                        "bearer": []
+                    }
+                ]
+            }
+        },
+        "/products": {
+            "get": {
+                "tags": [
+                    "products"
+                ],
+                "summary": "Mostrar Productos",
+                "operationId": "App\\Http\\Controllers\\Api\\ProductController::index",
+                "responses": {
+                    "401": {
+                        "description": "Inserta tu token pues hermano!"
+                    },
+                    "200": {
+                        "description": "Lista de Productos. Correcto"
+                    }
+                },
+                "security": [
+                    {
+                        "bearer": []
+                    }
+                ]
+            },
+            "post": {
+                "tags": [
+                    "products"
+                ],
+                "summary": "Agregar un nuevo Producto.",
+                "operationId": "store",
+                "requestBody": {
+                    "description": "Producto a ser creado",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Product"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "401": {
+                        "description": "Inserta tu token pues hermano!"
+                    },
+                    "201": {
+                        "description": "Creado"
+                    }
+                },
+                "security": [
+                    {
+                        "bearer": []
+                    }
+                ]
+            }
+        },
+        "/products/{productId}": {
+            "get": {
+                "tags": [
+                    "products"
+                ],
+                "summary": "Buscar Producto por ID",
+                "description": "Retorna un Producto",
+                "operationId": "show",
+                "parameters": [
+                    {
+                        "name": "productId",
+                        "in": "path",
+                        "description": "ID del Producto a retornar",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Product"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Inserta tu token pues hermano!"
+                    },
+                    "404": {
+                        "description": "Producto no existe"
+                    }
+                },
+                "security": [
+                    {
+                        "bearer": []
+                    }
+                ]
+            },
+            "put": {
+                "tags": [
+                    "products"
+                ],
+                "summary": "Actualizar un Producto existente",
+                "description": "",
+                "operationId": "update",
+                "parameters": [
+                    {
+                        "name": "productId",
+                        "in": "path",
+                        "description": "ID del Producto a actualizar",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "description": "Producto a ser actualizada",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Product"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "404": {
+                        "description": "Producto no encontrada"
+                    },
+                    "401": {
+                        "description": "Inserta tu token pues hermano!"
+                    },
+                    "200": {
+                        "description": "Producto actualizada correctamente"
+                    }
+                },
+                "security": [
+                    {
+                        "bearer": []
+                    }
+                ]
+            },
+            "delete": {
+                "tags": [
+                    "products"
+                ],
+                "summary": "Elimina un Producto",
+                "description": "",
+                "operationId": "delete",
+                "parameters": [
+                    {
+                        "name": "productId",
+                        "in": "path",
+                        "description": "Id del Producto a eliminar",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    }
+                ],
+                "responses": {
+                    "404": {
+                        "description": "Producto no encontrado"
+                    },
+                    "401": {
+                        "description": "Inserta tu token pues hermano!"
+                    },
+                    "200": {
+                        "description": "Producto eliminado correctamente"
+                    }
+                },
+                "security": [
+                    {
+                        "bearer": []
+                    }
+                ]
+            }
+        },
+        "/providers": {
+            "get": {
+                "tags": [
+                    "providers"
+                ],
+                "summary": "Mostrar Proveedores",
+                "operationId": "App\\Http\\Controllers\\Api\\ProviderController::index",
+                "responses": {
+                    "401": {
+                        "description": "Inserta tu token pues hermano!"
+                    },
+                    "200": {
+                        "description": "Lista de Proveedores. Correcto"
+                    }
+                },
+                "security": [
+                    {
+                        "bearer": []
+                    }
+                ]
+            },
+            "post": {
+                "tags": [
+                    "providers"
+                ],
+                "summary": "Agregar un nuevo Proveedor.",
+                "operationId": "store",
+                "requestBody": {
+                    "description": "Proveedor a ser creado",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Provider"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "401": {
+                        "description": "Inserta tu token pues hermano!"
+                    },
+                    "201": {
+                        "description": "Creado"
+                    }
+                },
+                "security": [
+                    {
+                        "bearer": []
+                    }
+                ]
+            }
+        },
+        "/providers/{providerId}": {
+            "get": {
+                "tags": [
+                    "providers"
+                ],
+                "summary": "Buscar Proveedor por ID",
+                "description": "Retorna un Proveedor",
+                "operationId": "show",
+                "parameters": [
+                    {
+                        "name": "providerId",
+                        "in": "path",
+                        "description": "ID del Proveedor a retornar",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Provider"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Inserta tu token pues hermano!"
+                    },
+                    "404": {
+                        "description": "Proveedor no existe"
+                    }
+                },
+                "security": [
+                    {
+                        "bearer": []
+                    }
+                ]
+            },
+            "put": {
+                "tags": [
+                    "providers"
+                ],
+                "summary": "Actualizar un Proveedor existente",
+                "description": "",
+                "operationId": "update",
+                "parameters": [
+                    {
+                        "name": "providerId",
+                        "in": "path",
+                        "description": "ID del Proveedor a actualizar",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "description": "Proveedor a ser actualizada",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Provider"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "404": {
+                        "description": "Proveedor no encontrada"
+                    },
+                    "401": {
+                        "description": "Inserta tu token pues hermano!"
+                    },
+                    "200": {
+                        "description": "Proveedor actualizada correctamente"
+                    }
+                },
+                "security": [
+                    {
+                        "bearer": []
+                    }
+                ]
+            },
+            "delete": {
+                "tags": [
+                    "providers"
+                ],
+                "summary": "Elimina un Proveedor",
+                "description": "",
+                "operationId": "delete",
+                "parameters": [
+                    {
+                        "name": "providerId",
+                        "in": "path",
+                        "description": "Id del Proveedor a eliminar",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    }
+                ],
+                "responses": {
+                    "404": {
+                        "description": "Proveedor no encontrado"
+                    },
+                    "401": {
+                        "description": "Inserta tu token pues hermano!"
+                    },
+                    "200": {
+                        "description": "Proveedor eliminado correctamente"
+                    }
+                },
+                "security": [
+                    {
+                        "bearer": []
+                    }
+                ]
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "Bill": {
+                "properties": {
+                    "id": {
+                        "description": "id",
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "Notes": {
+                        "description": "Notes of the Bill",
+                        "type": "string"
+                    },
+                    "status": {
+                        "description": "Status of the Bill (C,U,D)",
+                        "type": "string"
+                    },
+                    "sub_total": {
+                        "description": "Sub total of the Bill",
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "total": {
+                        "description": "Total of the Bill",
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "tax": {
+                        "description": "Tax of the Bill",
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "user_id": {
+                        "description": "The id of the User who is buying the Bill",
+                        "type": "int"
+                    },
+                    "created_at": {
+                        "description": "When the Bill was created",
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "updated_at": {
+                        "description": "When the Bill was updated",
+                        "type": "string",
+                        "format": "date-time"
+                    }
+                },
+                "type": "object"
+            },
+            "BillDetail": {
+                "properties": {
+                    "name": {
+                        "description": "name of the product/ingredient in the Detail Bill",
+                        "type": "string"
+                    },
+                    "description": {
+                        "description": "description of the product/ingredient in the Detail Bill",
+                        "type": "string"
+                    },
+                    "purchase_price": {
+                        "description": "Purchase price of the product/ingredient in the Detail Bill",
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "selling_price": {
+                        "description": "Selling price of the product/ingredient in the Detail Bill",
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "minimal_stock": {
+                        "description": "Minimal stock of the product/ingredient in the Detail Bill",
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "quantity": {
+                        "description": "quantity of the product/ingredient in the Detail Bill",
+                        "type": "char"
+                    },
+                    "total": {
+                        "description": "total of the product/ingredient in the Detail Bill",
+                        "type": "char"
+                    },
+                    "bill_id": {
+                        "description": "id of the Bill in the Detail Bill",
+                        "type": "integer"
+                    },
+                    "provider_id": {
+                        "description": "id of the Provider in the Detail Bill",
+                        "type": "integer"
+                    },
+                    "billable_id": {
+                        "description": "type of the entity (product/ingredient) in the Detail Bill",
+                        "type": "integer"
+                    },
+                    "billable_type": {
+                        "description": "type of the entity (product/ingredient) in the Detail Bill",
+                        "type": "string"
+                    },
+                    "created_at": {
+                        "description": "date when product/ingredient in the Detail Bill was created",
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "updated_at": {
+                        "description": "date when product/ingredient in the Detail Bill was updated",
+                        "type": "string",
+                        "format": "date-time"
+                    }
+                },
+                "type": "object"
+            },
+            "Category": {
+                "properties": {
+                    "name": {
+                        "description": "name of the Category",
+                        "type": "string"
+                    },
+                    "description": {
+                        "description": "description of the Category",
+                        "type": "string"
+                    },
+                    "created_at": {
+                        "description": "date when Category was created",
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "updated_at": {
+                        "description": "date when Category was updated",
+                        "type": "string",
+                        "format": "date-time"
+                    }
+                },
+                "type": "object"
+            },
+            "Client": {
+                "properties": {
+                    "name": {
+                        "description": "name of the client",
+                        "type": "string"
+                    },
+                    "alias": {
+                        "description": "alias of the client",
+                        "type": "string"
+                    },
+                    "phone": {
+                        "description": "phone just 9 numbers",
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "status": {
+                        "description": "status like: created=C, deleted=D",
+                        "type": "char"
+                    },
+                    "created_at": {
+                        "description": "date when client was created",
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "updated_at": {
+                        "description": "date when Client was updated",
+                        "type": "string",
+                        "format": "date-time"
+                    }
+                },
+                "type": "object"
+            },
+            "Dish": {
+                "properties": {
+                    "id": {
+                        "description": "id",
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "name": {
+                        "description": "Name of the Dish",
+                        "type": "string"
+                    },
+                    "description": {
+                        "description": "Description short of the Dish",
+                        "type": "string"
+                    },
+                    "price": {
+                        "description": "Retail price of the Dish",
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "code": {
+                        "description": "Code of the Dish",
+                        "type": "string"
+                    },
+                    "created_at": {
+                        "description": "When the Dish was created",
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "updated_at": {
+                        "description": "When the Dish was updated",
+                        "type": "string",
+                        "format": "date-time"
+                    }
+                },
+                "type": "object"
+            },
+            "DishIngredient": {
+                "properties": {
+                    "name": {
+                        "description": "name of the product/ingredient used in the Dish",
+                        "type": "string"
+                    },
+                    "description": {
+                        "description": "description of the product/ingredient used in the Dish",
+                        "type": "string"
+                    },
+                    "price": {
+                        "description": "price of the product/ingredient used in the Dish",
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "quantity": {
+                        "description": "quantity of the product/ingredient used in the Dish",
+                        "type": "char"
+                    },
+                    "total": {
+                        "description": "total of the product/ingredient used in the Dish",
+                        "type": "char"
+                    },
+                    "dishable_id": {
+                        "description": "id of the product/ingredient used in the Dish",
+                        "type": "integer"
+                    },
+                    "dishable_type": {
+                        "description": "type of the entity (product/ingredient) used in the Dish",
+                        "type": "integer"
+                    },
+                    "created_at": {
+                        "description": "date when product/ingredient used in the Dish was created",
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "updated_at": {
+                        "description": "date when product/ingredient used in the Dish was updated",
+                        "type": "string",
+                        "format": "date-time"
+                    }
+                },
+                "type": "object"
+            },
+            "Employee": {
+                "properties": {
+                    "name": {
+                        "description": "name of the Employee",
+                        "type": "string"
+                    },
+                    "alias": {
+                        "description": "alias of the Employee",
+                        "type": "string"
+                    },
+                    "phone": {
+                        "description": "phone just 9 numbers",
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "status": {
+                        "description": "status like: created=C, deleted=D",
+                        "type": "char"
+                    },
+                    "created_at": {
+                        "description": "date when Employee was created",
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "updated_at": {
+                        "description": "date when Employee was updated",
+                        "type": "string",
+                        "format": "date-time"
+                    }
+                },
+                "type": "object"
+            },
+            "Ingredient": {
+                "properties": {
+                    "id": {
+                        "description": "id",
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "name": {
+                        "description": "Name of the Ingredient",
+                        "type": "string"
+                    },
+                    "price": {
+                        "description": "Price of the Ingredient",
+                        "type": "integer"
+                    },
+                    "description": {
+                        "description": "Description short of the Ingredient",
+                        "type": "string"
+                    },
+                    "code": {
+                        "description": "Code short of the Ingredient",
+                        "type": "string"
+                    },
+                    "category_id": {
+                        "description": "The id of the category of the Ingredient",
+                        "type": "int"
+                    },
+                    "created_at": {
+                        "description": "When the Ingredient was created",
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "updated_at": {
+                        "description": "When the Ingredient was updated",
+                        "type": "string",
+                        "format": "date-time"
+                    }
+                },
+                "type": "object"
+            },
+            "Invoice": {
+                "properties": {
+                    "id": {
+                        "description": "id",
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "Notes": {
+                        "description": "Notes of the invoice",
+                        "type": "string"
+                    },
+                    "status": {
+                        "description": "Status of the invoice (C,U,D)",
+                        "type": "string"
+                    },
+                    "sub_total": {
+                        "description": "Sub total of the invoice",
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "total": {
+                        "description": "Total of the invoice",
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "tax": {
+                        "description": "Tax of the invoice",
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "client_id": {
+                        "description": "The id of the Client of the Invoice",
+                        "type": "int"
+                    },
+                    "user_id": {
+                        "description": "The id of the User who is selling the Invoice",
+                        "type": "int"
+                    },
+                    "created_at": {
+                        "description": "When the invoice was created",
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "updated_at": {
+                        "description": "When the invoice was updated",
+                        "type": "string",
+                        "format": "date-time"
+                    }
+                },
+                "type": "object"
+            },
+            "InvoiceDetail": {
+                "properties": {
+                    "name": {
+                        "description": "name of the product in the Detail Invoice",
+                        "type": "string"
+                    },
+                    "description": {
+                        "description": "description of the product in the Detail Invoice",
+                        "type": "string"
+                    },
+                    "price": {
+                        "description": "price of the product in the Detail Invoice",
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "quantity": {
+                        "description": "quantity of the product in the Detail Invoice",
+                        "type": "char"
+                    },
+                    "total": {
+                        "description": "total of the product in the Detail Invoice",
+                        "type": "char"
+                    },
+                    "invoiceable_id": {
+                        "description": "id of the product/ingredient in the Detail Invoice",
+                        "type": "integer"
+                    },
+                    "invoiceable_type": {
+                        "description": "type of the entity (product/ingredient) in the Detail Invoice",
+                        "type": "integer"
+                    },
+                    "created_at": {
+                        "description": "date when product in the Detail Invoice was created",
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "updated_at": {
+                        "description": "date when product in the Detail Invoice was updated",
+                        "type": "string",
+                        "format": "date-time"
+                    }
+                },
+                "type": "object"
+            },
+            "Product": {
+                "properties": {
+                    "id": {
+                        "description": "id",
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "name": {
+                        "description": "Name of the Product",
+                        "type": "string"
+                    },
+                    "description": {
+                        "description": "Description short of the Product",
+                        "type": "string"
+                    },
+                    "code": {
+                        "description": "Code of the Product",
+                        "type": "string"
+                    },
+                    "category_id": {
+                        "description": "The id of the category of the Product",
+                        "type": "int"
+                    },
+                    "created_at": {
+                        "description": "When the Product was created",
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "updated_at": {
+                        "description": "When the Product was updated",
+                        "type": "string",
+                        "format": "date-time"
+                    }
+                },
+                "type": "object"
+            },
+            "Provider": {
+                "properties": {
+                    "name": {
+                        "description": "name of the Provider",
+                        "type": "string"
+                    },
+                    "alias": {
+                        "description": "alias of the Provider",
+                        "type": "string"
+                    },
+                    "phone": {
+                        "description": "phone just 9 numbers",
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "status": {
+                        "description": "status like: created=C, deleted=D",
+                        "type": "char"
+                    },
+                    "created_at": {
+                        "description": "date when Provider was created",
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "updated_at": {
+                        "description": "date when Provider was updated",
+                        "type": "string",
+                        "format": "date-time"
+                    }
+                },
+                "type": "object"
+            },
+            "Schedule": {
+                "properties": {
+                    "id": {
+                        "description": "id",
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "Notes": {
+                        "description": "Notes of the Schedule",
+                        "type": "string"
+                    },
+                    "status": {
+                        "description": "Status of the Schedule (C,U,D)",
+                        "type": "string"
+                    },
+                    "user_id": {
+                        "description": "The id of the User who is buying the Schedule",
+                        "type": "int"
+                    },
+                    "created_at": {
+                        "description": "When the Schedule was created",
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "updated_at": {
+                        "description": "When the Schedule was updated",
+                        "type": "string",
+                        "format": "date-time"
+                    }
+                },
+                "type": "object"
+            },
+            "ScheduleDish": {
+                "properties": {
+                    "name": {
+                        "description": "name of the Dish in the Detail Bill",
+                        "type": "string"
+                    },
+                    "description": {
+                        "description": "description of the Dish in the Detail Bill",
+                        "type": "string"
+                    },
+                    "price": {
+                        "description": "price of the Dish in the Detail Bill",
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "quantity": {
+                        "description": "quantity of the Dish in the Detail Bill",
+                        "type": "char"
+                    },
+                    "schedule_id": {
+                        "description": "id of the Dish in the Detail Bill",
+                        "type": "integer"
+                    },
+                    "dish_id": {
+                        "description": "id of the Dish in the Detail Bill",
+                        "type": "integer"
+                    },
+                    "created_at": {
+                        "description": "date when Dish in the Detail Bill was created",
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "updated_at": {
+                        "description": "date when Dish in the Detail Bill was updated",
+                        "type": "string",
+                        "format": "date-time"
+                    }
+                },
+                "type": "object"
+            },
+            "Storage": {
+                "properties": {
+                    "id": {
+                        "description": "id",
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "name": {
+                        "description": "Name of the Storage",
+                        "type": "string"
+                    },
+                    "description": {
+                        "description": "Description short of the Storage",
+                        "type": "string"
+                    },
+                    "purchase_price": {
+                        "description": "Retail purchase_price of the Storage",
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "selling_price": {
+                        "description": "Retail selling_price of the Storage",
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "minimal_stock": {
+                        "description": "Retail minimal_stock of the Storage",
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "quantity": {
+                        "description": "quantity of the Storage",
+                        "type": "integer"
+                    },
+                    "storageable_id": {
+                        "description": "Id of the product/ingredient of the Storage",
+                        "type": "integer"
+                    },
+                    "provider_id": {
+                        "description": "Id of the Provider of the Product/Ingredient",
+                        "type": "integer"
+                    },
+                    "storageable_type": {
+                        "description": "Type of the product/ingredient of the Storage",
+                        "type": "string"
+                    },
+                    "created_at": {
+                        "description": "When the Storage was created",
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "updated_at": {
+                        "description": "When the Storage was updated",
+                        "type": "string",
+                        "format": "date-time"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "securitySchemes": {
+            "bearer": {
+                "type": "http",
+                "description": "Authorization token obtained from logging in.",
+                "name": "Authorization",
+                "in": "header",
+                "scheme": "bearer"
+            }
+        }
+    }
+}
